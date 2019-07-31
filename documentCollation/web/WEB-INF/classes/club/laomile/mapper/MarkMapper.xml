@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.laomile.dao.MarkDao">
+
+    <insert id="insertIntoMark" parameterType="club.laomile.bean.MarkBean" useGeneratedKeys="true" keyProperty="mark_id">
+        insert into mark_table(mark_name,mark_picture_id)
+        values
+        (#{mark_name},#{mark_picture_id})
+    </insert>
+
+    <select id="findByMarkName" parameterType="string" resultType="club.laomile.bean.MarkBean">
+        SELECT mark_id,mark_name,mark_picture_id FROM mark_table where mark_name = #{mark_name};
+    </select>
+
+    <select id="distinctMarkName" resultType="club.laomile.bean.MarkBean">
+        select DISTINCT mark_name from mark_table;
+    </select>
+
+</mapper>

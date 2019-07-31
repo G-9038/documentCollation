@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.laomile.dao.QuestionDao">
+
+    <insert id="insertIntoQuestion" parameterType="club.laomile.bean.QuestionBean" useGeneratedKeys="true" keyProperty="question_id">
+        insert into question_table(question_file_id,question,answer)
+        values
+        (#{question_file_id},#{question},#{answer})
+    </insert>
+
+    <select id="findquestionList" resultType="club.laomile.bean.QuestionBean">
+        SELECT question_id,question_file_id,question,answer FROM question_table where
+        question_file_id in (select file_id from mysql.file_table where file_user_id = #{file_user_id}) and
+        question like CONCAT(CONCAT('%',#{question},'%'));
+    </select>
+
+    <delete id="deleteqQuestion" parameterType="int">
+         delete from mysql.question_table where question_id=#{question_id}
+     </delete>
+</mapper>

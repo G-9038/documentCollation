@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.laomile.dao.UserDao">
+    <resultMap type="club.laomile.bean.UserBean" id="user">
+        <result column="user_id" property="user_id"/>
+        <result column="user_name" property="user_name"/>
+        <result column="user_password" property="user_password"/>
+    </resultMap>
+
+    <select id="findByUsername" parameterType="string" resultType="club.laomile.bean.UserBean">
+        SELECT user_id,user_name,user_password FROM user_table where user_name = #{user_name};
+    </select>
+
+    <insert id="insertIntoUser" parameterType="club.laomile.bean.UserBean" useGeneratedKeys="true" keyProperty="user_id">
+        insert into user_table(user_name,user_password)
+        values
+        (#{user_name},#{user_password})
+    </insert>
+
+</mapper>

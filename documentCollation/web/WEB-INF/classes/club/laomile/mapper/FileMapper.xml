@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.laomile.dao.FileDao">
+
+    <insert id="insertIntoFile" parameterType="club.laomile.bean.FileBean" useGeneratedKeys="true" keyProperty="file_id">
+        insert into file_table(file_name,file_path,file_remarks,file_user_id)
+        values
+        (#{file_name},#{file_path},#{file_remarks},#{file_user_id})
+        <selectKey keyProperty="file_id" order="AFTER" keyColumn="file_id" resultType="Integer">
+            SELECT LAST_INSERT_ID() AS file_id
+        </selectKey>
+    </insert>
+
+</mapper>

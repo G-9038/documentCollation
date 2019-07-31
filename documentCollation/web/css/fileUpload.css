@@ -1,0 +1,14 @@
+.centered{
+    position: absolute;
+    top: 100px;
+}
+
+.fileUploadInput{
+    margin-top: 5px;
+    margin-left: 100px;
+}
+
+.divFrom{
+    width:400px;
+    margin: 0px auto;
+}

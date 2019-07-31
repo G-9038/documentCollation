@@ -1,0 +1,14 @@
+.centered{
+    position: absolute;
+    top: 70px;
+}
+
+.selectTable{
+    position:absolute;
+    top: 140px;
+}
+
+.divFrom{
+    width:600px;
+    margin: 0px auto;
+}
